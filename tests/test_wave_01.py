@@ -39,6 +39,7 @@ def test_draw_letters_draws_ten():
     assert len(letters) == 10
 
 def test_draw_letters_is_list_of_letter_strings():
+    print("hi")
     # Arrange/Act
     letters = draw_letters()
 
@@ -50,10 +51,10 @@ def test_draw_letters_is_list_of_letter_strings():
         assert len(elem) == 1
 
 def test_letter_not_selected_too_many_times():
-
     for i in range(100):
         # Arrange/Act
         letters = draw_letters()
+        print(letters)
 
         letter_freq = {}
         for letter in letters:

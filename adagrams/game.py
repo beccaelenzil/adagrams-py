@@ -30,23 +30,64 @@ LETTER_POOL = {
     'Z': 1
 }
 
+LETTER_VALUES = {
+    'A': 1, 
+    'B': 3, 
+    'C': 3, 
+    'D': 2, 
+    'E': 1, 
+    'F': 4, 
+    'G': 2, 
+    'H': 4, 
+    'I': 1, 
+    'J': 8, 
+    'K': 5, 
+    'L': 1, 
+    'M': 3, 
+    'N': 1, 
+    'O': 1, 
+    'P': 2, 
+    'Q': 10, 
+    'R': 1, 
+    'S': 1, 
+    'T': 1, 
+    'U': 1, 
+    'V': 4, 
+    'W': 4, 
+    'X': 8, 
+    'Y': 4, 
+    'Z': 10
+}
+
 def draw_letters():
     letter_pool_copy = copy.deepcopy(LETTER_POOL)
     letters = []
 
     while len(letters) < 10:
         letter = random.choice(list(letter_pool_copy.keys()))
-        if letter_pool_copy[letter] > 0:
-            letters.append(letter)
-            letter_pool_copy[letter] -= 1
+        #if letter_pool_copy[letter] > 0:
+        letters.append(letter)
+        letter_pool_copy[letter] -= 1
 
     return letters
 
 def uses_available_letters(word, letter_bank):
-    pass
+    letter_bank_copy = copy.deepcopy(letter_bank)
+
+    for letter in word:
+        if letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
+        else:
+            return False
+    
+    return True
 
 def score_word(word):
-    pass
+    score = 0
+    for letter in word:
+        score += LETTER_VALUES[letter.upper()]
+
+    return score
 
 def get_highest_word_score(word_list):
     pass
