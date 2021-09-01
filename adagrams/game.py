@@ -14,7 +14,8 @@ def draw_letters():
     # manual version:
     hand = []
     for i in range(10):
-        rand = random.randint(0, len(pool))
+        # randint is inclusive
+        rand = random.randint(0, len(pool) - 1)
         ltr = pool[rand]
         hand.append(ltr)
         pool.remove(ltr)
