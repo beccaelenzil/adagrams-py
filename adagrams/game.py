@@ -65,9 +65,9 @@ def draw_letters():
 
     while len(letters) < 10:
         letter = random.choice(list(letter_pool_copy.keys()))
-        #if letter_pool_copy[letter] > 0:
-        letters.append(letter)
-        letter_pool_copy[letter] -= 1
+        if letter_pool_copy[letter] > 0:
+            letters.append(letter)
+            letter_pool_copy[letter] -= 1
 
     return letters
 
@@ -87,7 +87,23 @@ def score_word(word):
     for letter in word:
         score += LETTER_VALUES[letter.upper()]
 
+    if len(word) > 6 and len(word) < 11:
+        score += 8
+
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    highest = (word_list[0],0)
+    for word in word_list:
+        score = score_word(word)
+        if score > highest[1]:
+            highest = (word, score)
+        elif score == highest[1]:
+            if len(highest[0]) == 10:
+                pass
+            elif len(word) == 10 and len(highest[0]) != 10:
+                highest = (word, score)
+            elif len(word) < len(highest[0]):
+                highest = (word, score)
+
+    return highest
