@@ -31,4 +31,26 @@ LETTER_POOL = {
 
 hand = Hand(LETTER_POOL)
 
-print(hand.letter_bank)
+print("Welcome to Adagrams!")
+print("Let's draw some letters!")
+print(f"Here is the letter bank: {hand.letter_bank}")
+
+play = True
+while play:
+    word = input("Give me a word: ")
+    if hand.uses_available_letters(word):
+        print("Great word!")
+    else:
+        print("Invalid Word")
+
+    print(hand.letter_bank)
+
+    raw_decision = input("Would you like to make another word (W), quit (Q), or draw a new hand (H)? ")
+
+    if raw_decision == "W":
+        pass
+    elif raw_decision == "Q":
+        play = False
+    elif raw_decision == "H":
+        hand = Hand(LETTER_POOL)
+        print(f"Here is the letter bank: {hand.letter_bank}")

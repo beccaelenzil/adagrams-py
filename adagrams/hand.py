@@ -18,9 +18,10 @@ class Hand:
         return letters
 
     def uses_available_letters(self, word):
-        letter_bank_copy = copy.deepcopy(self.letter_bank)
+        letter_bank_copy = copy.copy(self.letter_bank)
 
         for letter in word:
+            letter = letter.upper()
             if letter in letter_bank_copy:
                 letter_bank_copy.remove(letter)
             else:
