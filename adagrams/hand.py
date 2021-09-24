@@ -17,8 +17,8 @@ class Hand:
 
         return letters
 
-    def uses_available_letters(word, letter_bank):
-        letter_bank_copy = copy.deepcopy(letter_bank)
+    def uses_available_letters(self, word):
+        letter_bank_copy = copy.deepcopy(self.letter_bank)
 
         for letter in word:
             if letter in letter_bank_copy:
